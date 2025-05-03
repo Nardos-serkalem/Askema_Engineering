@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-white text-center">
+    <h1>About Askema</h1>
+    <p class="lead">Who we are and what we stand for</p>
+</div>
+
+<section class="row mt-5 transparent-section text-white align-items-center">
+    <div class="col-md-6">
+        <h3>Our Mission</h3>
+        <p>We strive to deliver innovative technology solutions tailored to the unique needs of our clients across industries.</p>
+        <p>Our vision is to lead the way in smart digital transformation through collaboration, quality, and creativity.</p>
+    </div>
+    <div class="col-md-6">
+        <video autoplay muted loop class="img-fluid rounded shadow">
+            <source src="{{ url_for('static', filename='videos/about_us_motion.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</section>
+
+<section class="mt-5 text-center">
+    <a href="{{ url_for('discoverus') }}" class="btn btn-outline-light m-2">Discover Us</a>
+    <a href="{{ url_for('executive_team') }}" class="btn btn-outline-light m-2">Executive Team</a>
+</section>
+{% endblock %}
