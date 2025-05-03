@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-white text-center">
+    <h1>Create Account</h1>
+    <p class="lead">Join Askema and explore the future with us!</p>
+</div>
+
+<section class="mt-5 transparent-section text-white" style="max-width: 500px; margin: auto;">
+    <form method="POST" action="{{ url_for('signup') }}">
+        <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" class="form-control bg-dark text-white border-light" id="name" name="name" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control bg-dark text-white border-light" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control bg-dark text-white border-light" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-outline-light w-100">Sign Up</button>
+    </form>
+    <div class="text-center mt-3">
+        <a href="{{ url_for('login') }}" class="text-light">Already have an account? Login</a>
+    </div>
+</section>
+{% endblock %}

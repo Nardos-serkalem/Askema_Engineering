@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-white text-center">
+    <h1>Our Products</h1>
+    <p class="lead">Innovative solutions designed for your success</p>
+</div>
+
+<section class="row mt-5 transparent-section text-white">
+    <div class="col-md-6 mb-4">
+        <h4>Product One</h4>
+        <p>A cutting-edge AI-driven tool that optimizes business processes and improves efficiency.</p>
+        <img src="{{ url_for('static', filename='images/product1.jpg') }}" class="img-fluid rounded shadow" alt="Product One">
+    </div>
+    <div class="col-md-6 mb-4">
+        <h4>Product Two</h4>
+        <p>A secure cloud-based platform enabling seamless data management and collaboration.</p>
+        <video autoplay muted loop class="img-fluid rounded shadow">
+            <source src="{{ url_for('static', filename='videos/product2.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</section>
+{% endblock %}

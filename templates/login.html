@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-white text-center">
+    <h1>Login</h1>
+    <p class="lead">Welcome back! Please login to continue</p>
+</div>
+
+<section class="mt-5 transparent-section text-white" style="max-width: 500px; margin: auto;">
+    <form method="POST" action="{{ url_for('login') }}">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control bg-dark text-white border-light" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control bg-dark text-white border-light" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-outline-light w-100">Login</button>
+    </form>
+    <div class="text-center mt-3">
+        <a href="{{ url_for('signup') }}" class="text-light">Don't have an account? Sign up</a>
+    </div>
+</section>
+{% endblock %}
