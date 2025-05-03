@@ -1,0 +1,95 @@
+/* Global Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #000; /* fallback for video background */
+    color: #fff;
+    scroll-behavior: smooth;
+}
+
+.transparent-section {
+    background: rgba(0, 0, 0, 0.6); /* semi-transparent background */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Navbar Styles */
+.navbar {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: #fff !important;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #00c8ff !important;
+}
+
+/* Section Headings */
+h1, h2, h3 {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Buttons */
+.btn-outline-light {
+    border-color: #fff;
+    color: #fff;
+}
+
+.btn-outline-light:hover {
+    background-color: #00c8ff;
+    color: #000;
+    border-color: #00c8ff;
+}
+
+/* Form Styles */
+.form-control {
+    border: 1px solid #fff;
+}
+
+/* Responsive Video Background */
+#video-background {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -100;
+    object-fit: cover;
+    filter: brightness(0.3);
+}
+
+/* Content Positioning */
+.content-overlay {
+    position: relative;
+    z-index: 10;
+}
+
+/* Footer */
+footer {
+    padding: 30px 0;
+    text-align: center;
+    color: #ccc;
+    background: rgba(0, 0, 0, 0.8);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Scroll Animation */
+section {
+    transition: all 0.4s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .transparent-section {
+        padding: 20px;
+    }
+}
