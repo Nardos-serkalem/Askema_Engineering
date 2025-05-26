@@ -1,53 +1,59 @@
-from flask import Flask, render_template, request, redirect, url_for
-import os
+from flask import Flask, render_template
 
-app = Flask(__name__, static_folder='static')
+app = Flask(__name__)
 
+# Home page (index.html)
 @app.route('/')
 def home():
     return render_template('index.html')
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
+# Authentication pages
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
-@app.route('/about/discoverus')
-def discoverus():
-    return render_template('discover_us.html')
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
 
-@app.route('/about/executive')
-def executive_team():
-    return render_template('executive_team.html')
+# Other main pages
+@app.route('/news')
+def news():
+    return render_template('news.html')
+
+@app.route('/partnership')
+def partnership():
+    return render_template('partnership.html')
 
 @app.route('/products')
 def products():
     return render_template('products.html')
 
-@app.route('/testimonials')
-def testimonials():
-    return render_template('testimonials.html')
+@app.route('/services')
+def services():
+    return render_template('services.html')
 
-@app.route('/contact', methods=['GET', 'POST'])
+@app.route('/testimonial')
+def testimonial():
+    return render_template('testimonial.html')
+
+@app.route('/contact')
 def contact():
-    if request.method == 'POST':
-        # Handle form data here
-        name = request.form.get('name')
-        message = request.form.get('message')
-        # Save to DB (to be implemented)
-        return redirect(url_for('contact'))
     return render_template('contact.html')
 
-@app.route('/news')
-def news():
-    return render_template('news.html')
+# About and its subpages
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
-@app.route('/signup', methods=['GET', 'POST'])
-def signup():
-    if request.method == 'POST':
-        # Handle signup form submission here
-        # For now, just redirect to home
-        return redirect(url_for('home'))
-    return render_template('signup.html')
+@app.route('/about/discover')
+def discover_us():
+    return render_template('discover_us.html')
+
+@app.route('/about/team')
+def executive_team():
+    return render_template('executive_team.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
