@@ -1,25 +1,27 @@
+<!-- templates/login.html -->
 {% extends "base.html" %}
+
+{% block title %}Login | Askema Engineering{% endblock %}
 
 {% block content %}
 <div class="text-white text-center">
-    <h1>Login</h1>
-    <p class="lead">Welcome back! Please login to continue</p>
+    <h1>Login to Your Account</h1>
+    <p class="lead">Welcome back! Please enter your details.</p>
 </div>
 
-<section class="mt-5 transparent-section text-white" style="max-width: 500px; margin: auto;">
-    <form method="POST" action="{{ url_for('login') }}">
-        <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control bg-dark text-white border-light" id="email" name="email" required>
-        </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control bg-dark text-white border-light" id="password" name="password" required>
-        </div>
-        <button type="submit" class="btn btn-outline-light w-100">Login</button>
-    </form>
-    <div class="text-center mt-3">
-        <a href="{{ url_for('signup') }}" class="text-light">Don't have an account? Sign up</a>
+<section class="row justify-content-center mt-5">
+    <div class="col-md-5">
+        <form action="{{ url_for('login_submit') }}" method="POST" class="text-white">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Your password" required>
+            </div>
+            <button type="submit" class="btn btn-outline-light w-100">Login</button>
+        </form>
     </div>
 </section>
 {% endblock %}
