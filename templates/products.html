@@ -1,24 +1,41 @@
+<!-- templates/products.html -->
 {% extends "base.html" %}
+
+{% block title %}Products | Askema Engineering{% endblock %}
 
 {% block content %}
 <div class="text-white text-center">
     <h1>Our Products</h1>
-    <p class="lead">Innovative solutions designed for your success</p>
+    <p class="lead">High-quality brake and clutch components for all vehicle types</p>
 </div>
 
-<section class="row mt-5 transparent-section text-white">
-    <div class="col-md-6 mb-4">
-        <h4>Product One</h4>
-        <p>A cutting-edge AI-driven tool that optimizes business processes and improves efficiency.</p>
-        <img src="{{ url_for('static', filename='images/product1.jpg') }}" class="img-fluid rounded shadow" alt="Product One">
+<section class="row mt-5 text-white">
+    <div class="col-md-4 mb-4">
+        <div class="card bg-dark text-white h-100">
+            <img src="{{ url_for('static', filename='images/brake_pad.jpg') }}" class="card-img-top" alt="Brake Pads">
+            <div class="card-body">
+                <h5 class="card-title">Brake Pads</h5>
+                <p class="card-text">Durable and eco-friendly brake pads using materials sourced from leather, ceramic, and marble industries.</p>
+            </div>
+        </div>
     </div>
-    <div class="col-md-6 mb-4">
-        <h4>Product Two</h4>
-        <p>A secure cloud-based platform enabling seamless data management and collaboration.</p>
-        <video autoplay muted loop class="img-fluid rounded shadow">
-            <source src="{{ url_for('static', filename='videos/product2.mp4') }}" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+    <div class="col-md-4 mb-4">
+        <div class="card bg-dark text-white h-100">
+            <img src="{{ url_for('static', filename='images/clutch_plate.jpg') }}" class="card-img-top" alt="Clutch Plates">
+            <div class="card-body">
+                <h5 class="card-title">Clutch Plates</h5>
+                <p class="card-text">Reliable clutch plates designed for smooth and efficient vehicle operation.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card bg-dark text-white h-100">
+            <img src="{{ url_for('static', filename='images/custom_brake.jpg') }}" class="card-img-top" alt="Custom Solutions">
+            <div class="card-body">
+                <h5 class="card-title">Custom Solutions</h5>
+                <p class="card-text">Tailored products for specialized industry requirements.</p>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}
