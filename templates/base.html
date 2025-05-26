@@ -1,62 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Askema Website</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/bootstrap.min.css') }}">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Askema Engineering{% endblock %}</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="{{ url_for('static', filename='bootstrap/bootstrap.min.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
 </head>
-<body>
+<body class="bg-dark text-white">
 
-    <!-- Background Video -->
-    <video autoplay muted loop id="bg-video">
-        <source src="{{ url_for('static', filename='videos/background.mp4') }}" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="{{ url_for('home') }}">Askema Engineering</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <!-- Transparent Overlay -->
-    <div class="overlay">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('aboutus') }}">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('services') }}">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('products') }}">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('partnership') }}">Partnership</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('awards') }}">Awards</a></li>
+      </ul>
 
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="{{ url_for('home') }}">Askema</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
-                                About Us
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ url_for('about') }}">About</a></li>
-                                <li><a class="dropdown-item" href="{{ url_for('discoverus') }}">Discover Us</a></li>
-                                <li><a class="dropdown-item" href="{{ url_for('executive_team') }}">Executive Team</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url_for('products') }}">Products</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url_for('testimonials') }}">Testimonials</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url_for('news') }}">News</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/signup">Sign Up</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Main Page Content -->
-        <div class="container mt-5 pt-5">
-            {% block content %}{% endblock %}
-        </div>
-
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        {% if session.get('user') %}
+          <li class="nav-item">
+            <span class="navbar-text me-3">Hello, {{ session['user'] }}</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-outline-light btn-sm" href="{{ url_for('logout') }}">Logout</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link btn btn-outline-light btn-sm me-2" href="{{ url_for('signup') }}">Signup</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-light btn-sm text-dark" href="{{ url_for('login') }}">Login</a>
+          </li>
+        {% endif %}
+      </ul>
     </div>
+  </div>
+</nav>
 
-    <!-- Bootstrap Bundle JS -->
-    <script src="{{ url_for('static', filename='bootstrap/bootstrap.bundle.min.js') }}"></script>
+<!-- Flash messages -->
+<div class="container mt-3">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+</div>
+
+<!-- Main content -->
+<main class="container my-4">
+  {% block content %}{% endblock %}
+</main>
+
+<!-- Footer -->
+<footer class="bg-dark text-center text-white py-3">
+  <div class="container">
+    &copy; {{ current_year }} Askema Engineering. All rights reserved.
+  </div>
+</footer>
+
+<!-- Bootstrap JS Bundle (Popper + Bootstrap JS) -->
+<script src="{{ url_for('static', filename='bootstrap/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>
