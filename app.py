@@ -41,5 +41,13 @@ def contact():
 def news():
     return render_template('news.html')
 
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        # Handle signup form submission here
+        # For now, just redirect to home
+        return redirect(url_for('home'))
+    return render_template('signup.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
