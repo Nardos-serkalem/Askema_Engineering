@@ -1,27 +1,23 @@
+<!-- templates/index.html -->
 {% extends "base.html" %}
 
+{% block title %}Home | Askema Engineering{% endblock %}
+
 {% block content %}
-<div class="text-center text-white">
-    <h1 class="display-4">Welcome to Askema</h1>
-    <p class="lead">Explore our services, discover our team, and learn what makes us unique.</p>
+<div class="position-relative">
+    <video autoplay muted loop playsinline class="w-100" style="object-fit: cover; height: 90vh;">
+        <source src="{{ url_for('static', filename='videos/background.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
+        <h1 class="display-4 fw-bold">Welcome to Askema Engineering</h1>
+        <p class="lead">Reliable brake and clutch solutions for a sustainable future</p>
+        <a href="{{ url_for('about') }}" class="btn btn-outline-light mt-3">Learn More</a>
+    </div>
 </div>
 
-<section class="mt-5 text-white transparent-section" id="about-preview">
-    <h2>About Us</h2>
-    <p>We are a company dedicated to innovation and excellence. Learn more about our mission, team, and goals.</p>
+<section class="container my-5 text-center">
+    <h2 class="mb-4">We will be attending ETEX 2025</h2>
+    <p class="lead">East Africa's largest tech event</p>
 </section>
-
-<section class="mt-5 text-white transparent-section" id="products-preview">
-    <h2>Our Products</h2>
-    <p>Check out the range of products and solutions we provide to empower your business.</p>
-</section>
-
-<section class="mt-5 text-white transparent-section" id="clients-preview">
-    <h2>Our Clients</h2>
-    <p>We work with a wide variety of partners to build meaningful results.</p>
-</section>
-
-<footer class="mt-5 text-white text-center">
-    <p>&copy; 2025 Askema. All rights reserved.</p>
-</footer>
 {% endblock %}
