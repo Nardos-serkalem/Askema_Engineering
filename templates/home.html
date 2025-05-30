@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Home - Askema{% endblock %}
+{% block content %}
+<h1>Welcome to Askema</h1>
+<p>This is the homepage.</p>
+<a href="{{ url_for('overview') }}">Discover: Overview</a> |
+<a href="{{ url_for('team') }}">Our Team</a>
+{% endblock %}
